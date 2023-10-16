@@ -1,11 +1,10 @@
-function mergesort(array) {
-    if (array.length == 0) { return []; }
+function mergesort(arr) {
+    if (arr.length == 0) { return []; }
     
     var temp = [];
     //Split array into smaller parts
-    var arr = [];
-    for (let i = 0; i < array.length; i++) {
-        arr.push([array[i]]);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = [arr[i]];
     }
 
     //merge parts together
