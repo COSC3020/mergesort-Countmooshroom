@@ -8,36 +8,27 @@ function mergesort(arr) {
     }
 
     //merge parts together
-
     while (arr.length > 1) {
-        for (let i = 0; i < arr.length - 1; i += 2) {
-            temp.push([]);
-            while (arr[i].length > 0 || arr[i+1].length > 0) {
-                if (arr[i].length == 0) {
-                    temp[i/2].push(arr[i+1].shift());
+        let i = 0;
+        while (i < arr.length - 1) {
+            arr.splice(i, 0, [])
+            while (arr[i+1].length > 0 || arr[i+2].length > 0) {
+                if (arr[i+1].length == 0) {
+                    arr[i].push(arr[i+2].shift());
                 }
-                else if (arr[i+1].length == 0) {
-                    temp[i/2].push(arr[i].shift());
+                else if (arr[i+2].length == 0) {
+                    arr[i].push(arr[i+1].shift());
                 }
-                else if (arr[i][0] < arr[i+1][0]) {
-                    temp[i/2].push(arr[i].shift());
+                else if (arr[i+1][0] < arr[i+2][0]) {
+                    arr[i].push(arr[i+1].shift());
                 }
                 else {
-                    temp[i/2].push(arr[i+1].shift());
+                    arr[i].push(arr[i+2].shift());
                 }
             }
-        }
-        //If there's an odd one out
-        if (arr[arr.length - 1].length > 0) {
-            temp.push(arr.pop());
-        }
-
-        arr = [];
-        let tempLen = temp.length;
-        for (let j = 0; j < tempLen; j++) {
-            arr.push(temp.shift());
+            arr.splice(i+1, 2);
+            i++;
         }
     }
-
     return arr[0];
 }
