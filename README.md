@@ -12,6 +12,11 @@ part of the array each recursive call considers.
 
 ## Runtime Analysis
 
-Analyse the time complexity of your implementation and give a $\Theta$ bound for
+Analyze the time complexity of your implementation and give a $\Theta$ bound for
 its worst-case runtime. Add your answer, including your reasoning, to this
 markdown file.
+
+## Answer
+
+With this mergesort, no matter what case I have, it will go through about the same process and comparisons.  Each run-through of the middle while loop will merge together each set of two sets that are next to each other.  This is repeated until all the sets are merged together.  This process is very similar to the original mergesort, which has a complexity of $nlogn$.  However, in this version, I use the function shift(), which takes extra time.  Because of this, instead of taking constant time to merge arrays, it makes n actions every time it runs through the middle while loop.  This makes the runtime $n * nlogn$ or $n^2logn$.  At the beginning of the algorithm, there is a loop that takes $n$ time, but we ignore that since it is a lower-order term.  Therefore, the time complexity is $\Theta(n^2logn)$.
+
